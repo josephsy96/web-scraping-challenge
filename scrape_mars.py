@@ -30,3 +30,50 @@ def scrape():
     for mp in mars_p:
         mars_para = mp.find('div',{'class':'rollover_description_inner'}).text
         para.append(mars_para)
+
+#=====================================================================================
+    !which chromedriver
+
+    #Browser elements
+    executable_path = {'executable_path': '/usr/local/bin/chromedriver'}
+
+    browser = Browser('chrome', **executable_path, headless=False)
+
+    #URL Info
+    splinter_url = "https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars"
+    browser.visit(splinter_url)
+
+    #Setup pull points
+    splinter_html = browser.html
+
+    splinter_soup = bs(splinter_html, 'html.parser')
+    jpl_url = []
+
+    art = splinter_soup.select_one('article[class="carousel_item"]')
+
+    #Grab url
+    featured_image_url = art['style'].split("url('")[1][:-3]
+    jpl_url.append(splinter_url + featured_image_url)
+
+#=====================================================================================
+    #Mars Twitter Page
+    url = "https://twitter.com/marswxreport?lang=en"
+
+    html = requests.get(url)
+
+    #Soup module
+    soup = bs(html.text,'html.parser')
+
+    #Find list items
+    mars_tweets = soup.find_all("li", class_="js-stream-item")
+    mars_weather = []
+
+    for tweets in mars_tweets:
+        rt = tweets.find('p',class_='tweet-text').text.strip().split('pic*')[0][:-26]
+        
+        mars_weather.append(rt)
+
+    only_weather = [m for m in mars_weather if "InSight" in m]
+    fwt = only_weather[0]
+    
+#=====================================================================================
