@@ -5,6 +5,9 @@ from bs4 import BeautifulSoup as bs
 import pandas as pd
 import requests
 
+
+
+#=====================================================================================
 def scrape():
 
     #Website to scrape
