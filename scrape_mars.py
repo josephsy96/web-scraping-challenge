@@ -77,6 +77,20 @@ def scrape():
     fwt = only_weather[0]
 
 #=====================================================================================
+    #Mars Facts website
+    facts_url = "https://space-facts.com/mars/"
+
+    #Munge Data
+    mars_facts = pd.read_html(facts_url)
+    mars_df = mars_facts[0]
+    mars_df.columns = ['Mars','Info']
+    mars_df
+
+    #Set mars_df to html
+    mars_html = mars_df.to_html()
+    mars_html.replace('\n','')
+
+    mars_df.to_html('mars_table.html')
 
 #=====================================================================================
     #Master Lists
@@ -156,3 +170,5 @@ def scrape():
         
     #Create Dictionary
     hemi_dict = {'title': title_list,'hemisphere': url_list}
+    
+#=====================================================================================
