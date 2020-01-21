@@ -177,8 +177,10 @@ def scrape():
     hemi_data = {'title': title_list,'hemisphere': url_list}
     
 #=====================================================================================
-    mars_data = {'News':title,'Content':para,'jpl_image': jpl_url}
+    mars_data = {'News':title,'Content':para,'jpl_image': jpl_url,'title': title_list,
+    'hemisphere': url_list}
     
     browser.quit()
 
     return mars_data
+
