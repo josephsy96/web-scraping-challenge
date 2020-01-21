@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Hot Finds</title>
+  <title>Mars Data</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 
@@ -13,15 +13,20 @@
   <div class="container">
 
     <div class="jumbotron text-center">
-      <h1>Put Your Title Here</h1>
-      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Call To Action Here</a></p>
+      <h1>Mars Page</h1>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape Mars Data</a></p>
     </div>
 
-    <div class="row" id="craiglist-listings">
+    <div class="row">
       <div class="col-md-12">
-        <!-- @TODO render your data here -->
+        <img src={{ mars_website.src }} width 50% />
+        <h3 class="pull-left">Latest Mars News</h3>
+          <p>{{ mars_website.title}}</p>
+          <p>{{ mars_website.para}}</p>
       </div>
-    </div>
+      <div class="col-md-6">
+        <h3>Featured Image</h3>
+      </div>
 
   </div>
 </body>

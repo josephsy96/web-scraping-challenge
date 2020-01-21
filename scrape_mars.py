@@ -10,6 +10,8 @@ import requests
 #=====================================================================================
 def scrape():
 
+    mars_dict = {}
+
     #Website to scrape
     mission_url = 'https://mars.nasa.gov/news/?page=0&per_page=40&order=publish_date+desc%2Ccreated_at+desc&search=&category=19%2C165%2C184%2C204&blank_scope=Latest'
     mission_html = requests.get(mission_url)
@@ -35,7 +37,7 @@ def scrape():
         para.append(mars_para)
 
 #=====================================================================================
-    !which chromedriver
+    # !which chromedriver
 
     #Browser elements
     executable_path = {'executable_path': '/usr/local/bin/chromedriver'}
@@ -175,3 +177,4 @@ def scrape():
     hemi_dict = {'title': title_list,'hemisphere': url_list}
     
 #=====================================================================================
+    browser.quit()
