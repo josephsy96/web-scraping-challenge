@@ -22,7 +22,7 @@ def mars_index():
 def scrape():
     mars_website = mongo.db.mars_website
     mars_f = scrape_mars.scrape()
-    mars_website.update({},title_data,upsert=True)
+    mars_website.update({},mars_data,upsert=True)
     return redirect("/", code=302)
 
 if __name__ == "__main__":

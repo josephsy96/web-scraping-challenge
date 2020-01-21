@@ -10,7 +10,7 @@ import requests
 #=====================================================================================
 def scrape():
 
-    mars_dict = {}
+    
 
     #Website to scrape
     mission_url = 'https://mars.nasa.gov/news/?page=0&per_page=40&order=publish_date+desc%2Ccreated_at+desc&search=&category=19%2C165%2C184%2C204&blank_scope=Latest'
@@ -174,7 +174,11 @@ def scrape():
         title_list.append(v_title)
         
     #Create Dictionary
-    hemi_dict = {'title': title_list,'hemisphere': url_list}
+    hemi_data = {'title': title_list,'hemisphere': url_list}
     
 #=====================================================================================
+    mars_data = {'News':title,'Content':para,'jpl_image': jpl_url}
+    
     browser.quit()
+
+    return mars_data
