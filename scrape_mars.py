@@ -36,6 +36,7 @@ def scrape():
         mars_para = mp.find('div',{'class':'rollover_description_inner'}).text
         para.append(mars_para)
 
+    mars_news = {'n_title': title,'n_p':para}
 #=====================================================================================
     # !which chromedriver
 
@@ -95,7 +96,7 @@ def scrape():
     mars_html = mars_df.to_html()
     mars_html.replace('\n','')
 
-    mars_df.to_html('mars_table.html')
+    mars_ht = mars_df.to_html('mars_table.html')
 
 #=====================================================================================
     #Master Lists
@@ -177,8 +178,8 @@ def scrape():
     hemi_data = {'title': title_list,'hemisphere': url_list}
     
 #=====================================================================================
-    mars_data = {'News':title,'Content':para,'jpl_image': jpl_url,'title': title_list,
-    'hemisphere': url_list}
+    mars_data = {'News':mars_news , 'mars_weather':mars_weather, 'jpl_image': jpl_url, 'title': title_list, 'urls':url_list,
+    'hem': hemi_data, 'mars_dataframe': mars_ht}
     
     browser.quit()
 
